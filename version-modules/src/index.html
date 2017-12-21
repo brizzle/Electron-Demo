@@ -1,0 +1,20 @@
+<html>
+  <head>
+    <!-- <link rel="stylesheet" href="countdown.css" /> -->
+  </head>
+  <body>
+    <h1>Awesome!</h1>
+    <div id="player">Hi</div>
+
+    <script src="node_modules/systemjs/dist/system.js"></script>
+
+    <script>
+      System.config({
+        meta: {
+          format: "cjs"
+        }
+      });
+      System.import("build/app.js");
+    </script>
+  </body>
+</html>
