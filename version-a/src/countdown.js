@@ -8,3 +8,11 @@ module.exports = function countdown(tick) {
     }
   }, 1000)
 }
+
+
+// AMD module format
+// CommonJS module format
+// Module Bundlers
+
+// Browserify - Module Bundler
+// WebPack - Module Bundler

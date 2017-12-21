@@ -8,8 +8,8 @@ let mainWindow
 
 app.on("ready", _ => {
   mainWindow = new BrowserWindow({
-    height: 400,
-    width: 400
+    height: 700,
+    width: 700
   })
 
   mainWindow.loadURL(`file://${__dirname}/countdown.html`)
