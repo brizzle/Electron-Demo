@@ -1,7 +1,4 @@
-// Revealing Module Pattern - Singleton
-var electronDemo = electronDemo || {};
-
-electronDemo.singletonModule = function(electronDemo) {
+module.exports = (function() {
   var message = "Welcome to the Revealing Module Singleton!";
 
   function printMessage() {
@@ -11,4 +8,4 @@ electronDemo.singletonModule = function(electronDemo) {
   return {
     showMessage: printMessage
   }
-}(electronDemo);
+})();

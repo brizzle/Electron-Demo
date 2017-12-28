@@ -1,6 +1,4 @@
-var electronDemo = electronDemo || {};
-
-electronDemo.constants = (function(electronDemo){
+module.exports = (function(){
   "use strict";
 
   var listenerTypes = {
@@ -10,4 +8,4 @@ electronDemo.constants = (function(electronDemo){
   return {
     listenerNameTypes: listenerTypes
   }
-})(electronDemo);
+})();

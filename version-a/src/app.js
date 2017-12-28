@@ -37,11 +37,8 @@
 
 const electron = require("electron");
 const countdown = require("./countdown.module");
-
-// var electronDemo = electronDemo || {};
-
-// const singletonModule = require("./singleton.module");
-// electronDemo.constants = require("./constants.module");
+const singletonModule = require("./singleton.module");
+const constants = require("./constants.module");
 const app = electron.app
 const BrowserWindow = electron.BrowserWindow
 const ipc = electron.ipcMain
@@ -65,9 +62,8 @@ app.on("ready", _ => {
 ipc.on("countdown-start", _ => {
   console.log("caught it!!!");
   countdown(count => {
-    mainWindow.webContents.send("countdown", count);
+    mainWindow.webContents.send(constants.listenerNameTypes.countdown, count);
   });
 });
 
-//console.log(`Value: ${electronDemo.constants.listenerNameTypes.countdown}`);
-// electronDemo.singletonModule.showMessage();
+singletonModule.showMessage;

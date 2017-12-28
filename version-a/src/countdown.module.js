@@ -1,4 +1,4 @@
-module.exports = function countdown(tick) {
+module.exports = (function countdown(tick) {
   let count = 3;
 
   let timer = setInterval(_ => {
@@ -7,7 +7,7 @@ module.exports = function countdown(tick) {
       clearInterval(timer);
     }
   }, 1000);
-};
+});
 
 // AMD module format
 // CommonJS module format
