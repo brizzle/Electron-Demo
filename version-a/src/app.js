@@ -43,26 +43,47 @@ const app = electron.app
 const BrowserWindow = electron.BrowserWindow
 const ipc = electron.ipcMain
 
-let mainWindow;
+// let mainWindow;
+const windows = [];
 
 app.on("ready", _ => {
-  mainWindow = new BrowserWindow({
-    height: 700,
-    width: 700
+  // mainWindow = new BrowserWindow({
+    [1, 2, 3].forEach(_ => {
+      let win = new BrowserWindow({
+        height: 700,
+        width: 700
+      });
+    
+    // mainWindow.loadURL(`file://${__dirname}/countdown.html`);
+    win.loadURL(`file://${__dirname}/countdown.html`);
+    
+    // mainWindow.on("closed", _ => {
+    //   console.log("closed!");
+    //   mainWindow = null;
+    // })
+
+    win.on("closed", _ => {
+      console.log("closed!");
+      mainWindow = null;
+    })
+
+    windows.push(win);
   });
+})
   
-  mainWindow.loadURL(`file://${__dirname}/countdown.html`);
-  
-  mainWindow.on("closed", _ => {
-    console.log("closed!");
-    mainWindow = null;
-  })
-});
-  
+// ipc.on("countdown-start", _ => {
+//   console.log("caught it!!!");
+//   countdown(count => {
+//     mainWindow.webContents.send(constants.listenerNameTypes.countdown, count);
+//   });
+// });
+
 ipc.on("countdown-start", _ => {
-  console.log("caught it!!!");
   countdown(count => {
-    mainWindow.webContents.send(constants.listenerNameTypes.countdown, count);
+    console.log("count", count)
+    windows.forEach(win => {
+      win.webContents.send(constants.listenerNameTypes.countdown, count);
+    })
   });
 });
 
